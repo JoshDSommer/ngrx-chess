@@ -1,6 +1,31 @@
 {
   "version": 1,
   "projects": {
+    "login": {
+      "projectType": "library",
+      "root": "libs/login",
+      "sourceRoot": "libs/login/src",
+      "prefix": "login",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/login"],
+          "options": {
+            "jestConfig": "libs/login/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/login/src/**/*.ts",
+              "libs/login/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "sign-up": {
       "projectType": "library",
       "root": "libs/sign-up",

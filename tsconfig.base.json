@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ngrx-chess/login": ["libs/login/src/index.ts"],
       "@ngrx-chess/sign-up": ["libs/sign-up/src/index.ts"]
     }
   },

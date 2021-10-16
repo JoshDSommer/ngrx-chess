@@ -28,6 +28,9 @@
     ]
   },
   "projects": {
+    "login": {
+      "tags": ["login"]
+    },
     "sign-up": {
       "tags": ["sign-up"]
     },
