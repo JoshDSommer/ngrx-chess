@@ -28,6 +28,9 @@
     ]
   },
   "projects": {
+    "game": {
+      "tags": ["game"]
+    },
     "login": {
       "tags": ["login"]
     },
