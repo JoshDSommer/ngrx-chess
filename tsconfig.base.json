@@ -17,6 +17,7 @@
     "paths": {
       "@ngrx-chess/game": ["libs/game/src/index.ts"],
       "@ngrx-chess/login": ["libs/login/src/index.ts"],
+      "@ngrx-chess/shared": ["libs/shared/src/index.ts"],
       "@ngrx-chess/sign-up": ["libs/sign-up/src/index.ts"]
     }
   },

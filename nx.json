@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
         "accessToken": "MTgwODE5OTItNGExNS00ZDk2LTlhZTItMGYxMzQ1ODIyZmQ4fHJlYWQtd3JpdGU="
       }
     }
@@ -29,20 +34,41 @@
   },
   "projects": {
     "game": {
-      "tags": ["game"]
+      "tags": [
+        "game",
+        "shared"
+      ]
     },
     "login": {
-      "tags": ["login"]
+      "tags": [
+        "login",
+        "shared"
+      ]
+    },
+    "shared": {
+      "tags": [
+        "shared"
+      ]
     },
     "sign-up": {
-      "tags": ["sign-up"]
+      "tags": [
+        "sign-up",
+        "shared"
+      ]
     },
     "web-ngrx-chess": {
-      "tags": []
+      "tags": [
+        "game",
+        "login",
+        "share",
+        "sign-up"
+      ]
     },
     "web-ngrx-chess-e2e": {
       "tags": [],
-      "implicitDependencies": ["web-ngrx-chess"]
+      "implicitDependencies": [
+        "web-ngrx-chess"
+      ]
     }
   }
 }
