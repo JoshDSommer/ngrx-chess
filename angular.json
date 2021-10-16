@@ -1,6 +1,31 @@
 {
   "version": 1,
   "projects": {
+    "sign-up": {
+      "projectType": "library",
+      "root": "libs/sign-up",
+      "sourceRoot": "libs/sign-up/src",
+      "prefix": "sign-up",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sign-up"],
+          "options": {
+            "jestConfig": "libs/sign-up/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/sign-up/src/**/*.ts",
+              "libs/sign-up/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "web-ngrx-chess": {
       "projectType": "application",
       "root": "apps/web-ngrx-chess",
