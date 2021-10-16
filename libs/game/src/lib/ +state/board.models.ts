@@ -1,6 +1,6 @@
 export interface Square {
-  column: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | string;
-  row: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | string;
+  column: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
+  row: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 }
 export const rowLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
@@ -15,7 +15,7 @@ export enum SquareState {
   differentTeam = 'differentTeam',
   emptySquare = 'emptySquare',
   sameChessPiece = 'sameChessPiece',
-  noChessPieceSelected = 'noChessPieceSelected'
+  noChessPieceSelected = 'noChessPieceSelected',
 }
 
 export enum ChessPieceName {
@@ -24,12 +24,12 @@ export enum ChessPieceName {
   knight = 'knight',
   bishop = 'bishop',
   king = 'king',
-  queen = 'queen'
+  queen = 'queen',
 }
 
 export enum ChessColor {
   white = 'white',
-  black = 'black'
+  black = 'black',
 }
 
 export interface ChessPiece {
@@ -69,9 +69,9 @@ export type ChessBoard = {
 
 export interface BoardState {
   board: ChessBoard;
-  selectedSquare: Square | null;
-  selectedChessPiece: Square | null;
-  previousSelectedChessPiece: Square | null;
+  selectedSquare?: Square;
+  selectedChessPiece?: Square;
+  selectedEnemyChessPiece?: Square;
   teamInFocus: ChessColor;
   whitesTakenPieces: TakenPieces;
   blacksTakenPieces: TakenPieces;

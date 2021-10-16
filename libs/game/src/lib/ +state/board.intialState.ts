@@ -1,11 +1,10 @@
 import {
   BoardState,
   ChessColor,
-  ChessPiece,
   ChessPieceName,
   ChessRow,
   ChessSquare,
-  rowLetters
+  rowLetters,
 } from './board.models';
 
 const emptyRow = () => ({
@@ -16,7 +15,7 @@ const emptyRow = () => ({
   e: { highlighted: false },
   f: { highlighted: false },
   g: { highlighted: false },
-  h: { highlighted: false }
+  h: { highlighted: false },
 });
 
 const rowSeven = [
@@ -26,8 +25,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -35,8 +34,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -44,8 +43,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -53,8 +52,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -62,8 +61,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -71,8 +70,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -80,8 +79,8 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -89,9 +88,9 @@ const rowSeven = [
       color: ChessColor.black,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
-  }
+      moved: false,
+    },
+  },
 ];
 const rowEight = [
   {
@@ -100,8 +99,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.rook,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -109,8 +108,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.knight,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -118,8 +117,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.bishop,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -127,8 +126,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.queen,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -136,8 +135,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.king,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -145,8 +144,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.bishop,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -154,8 +153,8 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.knight,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -163,9 +162,9 @@ const rowEight = [
       color: ChessColor.black,
       name: ChessPieceName.rook,
       possibleMoves: [],
-      moved: false
-    }
-  }
+      moved: false,
+    },
+  },
 ];
 
 const rowTwo = [
@@ -175,8 +174,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -184,8 +183,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -193,8 +192,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -202,8 +201,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -211,8 +210,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -220,8 +219,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -229,8 +228,8 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -238,9 +237,9 @@ const rowTwo = [
       color: ChessColor.white,
       name: ChessPieceName.pawn,
       possibleMoves: [],
-      moved: false
-    }
-  }
+      moved: false,
+    },
+  },
 ];
 
 const rowOne = [
@@ -250,8 +249,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.rook,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -259,8 +258,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.knight,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -268,8 +267,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.bishop,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -277,8 +276,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.queen,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -286,8 +285,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.king,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -295,8 +294,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.bishop,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -304,8 +303,8 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.knight,
       possibleMoves: [],
-      moved: false
-    }
+      moved: false,
+    },
   },
   {
     highlighted: false,
@@ -313,9 +312,9 @@ const rowOne = [
       color: ChessColor.white,
       name: ChessPieceName.rook,
       possibleMoves: [],
-      moved: false
-    }
-  }
+      moved: false,
+    },
+  },
 ];
 
 const mapRow = (rowToMap: ChessSquare[]) => {
@@ -334,13 +333,13 @@ export const initialState: BoardState = {
     4: emptyRow(),
     3: emptyRow(),
     2: mapRow(rowTwo),
-    1: mapRow(rowOne)
+    1: mapRow(rowOne),
   },
-  selectedSquare: null,
-  selectedChessPiece: null,
-  previousSelectedChessPiece: null,
+  selectedSquare: undefined,
+  selectedChessPiece: undefined,
+  selectedEnemyChessPiece: undefined,
   teamInFocus: ChessColor.white,
   whitesTakenPieces: [],
   blacksTakenPieces: [],
-  possibleMoves: []
+  possibleMoves: [],
 };

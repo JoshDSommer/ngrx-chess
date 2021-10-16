@@ -41,6 +41,12 @@ export const selectPiece = createAction(
   '[Board State] select chess piece',
   props<{ square: Square; chessPiece: ChessPiece }>()
 );
+
+export const selectEnemyChessPiece = createAction(
+  '[Board State] select enemy chess piece',
+  props<{ square: Square; chessPiece: ChessPiece }>()
+);
+
 export const setSelectedPiece = createAction(
   '[Board State] set selected chess piece',
   props<{ square: Square }>()
