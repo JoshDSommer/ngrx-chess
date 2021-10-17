@@ -1,0 +1,15 @@
+<chess-board-row *ngFor="let row of board">
+  <chess-square
+    [chessPiece]="square?.chessPiece"
+    *ngFor="let square of row.row"
+    [isSelected]="
+      selectedCoordinate?.row === +row.key &&
+      selectedCoordinate?.column === square?.key
+    "
+    [class.hightlight]="square?.highlighted"
+    [square]="newSquare(square.key, row.key)"
+    (squareSelected)="squareSelected($event)"
+    (chessPieceSelected)="chessPieceSelected($event, square.chessPiece!)"
+  >
+  </chess-square>
+</chess-board-row>

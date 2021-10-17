@@ -4,14 +4,25 @@ import {
   ChessColor,
   ChessPiece,
   ChessPieceName,
-  rowLetters,
+  columnLetters,
   Square,
   Squares,
 } from './board.models';
 
 const movementDirection = (chessPiece: ChessPiece) =>
   chessPiece.color === ChessColor.black ? -1 : +1;
-
+export interface MovePiece {
+  [ChessPieceName.pawn]: (
+    square: Square,
+    board: ChessBoard,
+    chessPiece: ChessPiece
+  ) => Squares;
+  [ChessPieceName.knight]: () => Squares;
+  [ChessPieceName.rook]: () => Squares;
+  [ChessPieceName.king]: () => Squares;
+  [ChessPieceName.queen]: () => Squares;
+  [ChessPieceName.bishop]: () => Squares;
+}
 export const moves = {
   [ChessPieceName.pawn]: calculatePawnMoves,
   [ChessPieceName.knight]: calculateKnightMoves,
@@ -19,7 +30,7 @@ export const moves = {
   [ChessPieceName.king]: () => [] as Squares,
   [ChessPieceName.queen]: () => [] as Squares,
   [ChessPieceName.bishop]: () => [] as Squares,
-};
+} as MovePiece;
 
 const filterInvalidMoves = (square: Square) => {
   if (square.row > 8 || square.row < 1) {
@@ -62,7 +73,8 @@ export function calculateMove(
     if (!chessPiece) {
       return [];
     }
-    const move = moves[`${chessPiece.name}`];
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    const move = moves[chessPiece.name];
     const availableMoves = move(square, board, chessPiece) as Squares;
     return availableMoves
       .filter(filterInvalidMoves)
@@ -77,15 +89,17 @@ export function pawnStartingMoves(
 ) {
   const rows = chessPiece.color === ChessColor.black ? [6, 5] : [3, 4];
   const direction = movementDirection(chessPiece);
-  const columnIndex = rowLetters.findIndex((value) => value === square.column);
+  const columnIndex = columnLetters.findIndex(
+    (value) => value === square.column
+  );
   const potentialCaptures = [
     {
       row: +square.row + direction,
-      column: rowLetters[columnIndex - direction],
+      column: columnLetters[columnIndex - direction],
     },
     {
       row: +square.row + direction,
-      column: rowLetters[columnIndex + direction],
+      column: columnLetters[columnIndex + direction],
     },
   ] as Squares;
   const filterCaptures = filterPotentialPawnCaptures(board, chessPiece?.color);
@@ -116,14 +130,16 @@ export function pawnMoves(
   square: Square
 ) {
   const direction = movementDirection(chessPiece);
-  const columnIndex = rowLetters.findIndex((value) => value === square.column);
+  const columnIndex = columnLetters.findIndex(
+    (value) => value === square.column
+  );
   const row = +square.row + +direction;
   const filterCaptures = filterPotentialPawnCaptures(board, chessPiece?.color);
   const blockedMoves = (square: Square) =>
     !filterPotentialPawnCaptures(board, chessPiece?.color)(square);
   const potentialCaptures = [
-    { row, column: rowLetters[columnIndex - 1] },
-    { row, column: rowLetters[columnIndex + 1] },
+    { row, column: columnLetters[columnIndex - 1] },
+    { row, column: columnLetters[columnIndex + 1] },
   ] as Squares;
   const moves = [{ row, column: square.column }] as Squares;
 
@@ -146,23 +162,25 @@ function calculateKnightMoves(
   square: Square,
   board: ChessBoard,
   chessPiece: ChessPiece
-) {
-  const columnIndex = rowLetters.findIndex((value) => value === square.column);
+): Squares {
+  const columnIndex = columnLetters.findIndex(
+    (value) => value === square.column
+  );
   const upMoves = [
-    { row: +square.row + 2, column: rowLetters[columnIndex - 1] },
-    { row: +square.row + 2, column: rowLetters[columnIndex + 1] },
+    { row: +square.row + 2, column: columnLetters[columnIndex - 1] },
+    { row: +square.row + 2, column: columnLetters[columnIndex + 1] },
   ] as Squares;
   const downMoves = [
-    { row: +square.row - 2, column: rowLetters[columnIndex - 1] },
-    { row: +square.row - 2, column: rowLetters[columnIndex + 1] },
+    { row: +square.row - 2, column: columnLetters[columnIndex - 1] },
+    { row: +square.row - 2, column: columnLetters[columnIndex + 1] },
   ] as Squares;
   const leftMoves = [
-    { row: +square.row - 1, column: rowLetters[columnIndex - 2] },
-    { row: +square.row + 1, column: rowLetters[columnIndex - 2] },
+    { row: +square.row - 1, column: columnLetters[columnIndex - 2] },
+    { row: +square.row + 1, column: columnLetters[columnIndex - 2] },
   ] as Squares;
   const rightMoves = [
-    { row: +square.row - 1, column: rowLetters[columnIndex + 2] },
-    { row: +square.row + 1, column: rowLetters[columnIndex + 2] },
+    { row: +square.row - 1, column: columnLetters[columnIndex + 2] },
+    { row: +square.row + 1, column: columnLetters[columnIndex + 2] },
   ] as Squares;
 
   const possibleMoves = [...upMoves, ...downMoves, ...leftMoves, ...rightMoves];
@@ -173,17 +191,19 @@ function calculateRookMoves(
   square: Square,
   board: ChessBoard,
   chessPiece: ChessPiece
-) {
-  const columnIndex = rowLetters.findIndex((value) => value === square.column);
-  const leftMoves = rowLetters
+): Squares {
+  const columnIndex = columnLetters.findIndex(
+    (value) => value === square.column
+  );
+  const leftMoves = columnLetters
     .filter((value, index) => index < columnIndex)
     .map((column) => ({ column, row: square.row }));
-  const rightMoves = rowLetters
+  const rightMoves = columnLetters
     .filter((value, index) => index > columnIndex)
-    .map((column) => ({ column, row: square.row }));
+    .map((column) => ({ column, row: square.row } as Square));
 
   const upMoves = [];
 
-  const possibleMoves = [...leftMoves, ...rightMoves];
+  const possibleMoves = [...leftMoves, ...rightMoves] as Squares;
   return possibleMoves;
 }

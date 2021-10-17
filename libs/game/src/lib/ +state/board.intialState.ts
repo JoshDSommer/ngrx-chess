@@ -4,7 +4,7 @@ import {
   ChessPieceName,
   ChessRow,
   ChessSquare,
-  rowLetters,
+  columnLetters,
 } from './board.models';
 
 const emptyRow = () => ({
@@ -319,7 +319,7 @@ const rowOne = [
 
 const mapRow = (rowToMap: ChessSquare[]) => {
   return rowToMap.reduce(
-    (prev, curr, index) => ({ ...prev, [rowLetters[index]]: curr }),
+    (prev, curr, index) => ({ ...prev, [columnLetters[index]]: curr }),
     {}
   ) as ChessRow;
 };

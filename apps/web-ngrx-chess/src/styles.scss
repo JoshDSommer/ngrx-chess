@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+:root {
+  --background-color: #ff48c4;
+  --dark-background-color: #c04df9;
+  --light-background-color: #2bd1fc;
+  --highlight: 243, 234, 95;
+  --chess-square-height: calc((100vh / 10));
+  --chess-square-width: calc((100vw / 10));
+  --chess-board-height: calc(var(--chess-square-height) * 8);
+  --chess-board-width: calc(var(--chess-square-width) * 8);
+}
+
+body {
+  background-color: var(--background-color);
+}
+h1 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: var(--highlight);
+  font-weight: bold;
+  max-width: 620px;
+  margin: 0 auto;
+}
+game-chess-board {
+  display: block;
+  max-width: min(var(--chess-board-height), var(--chess-board-width));
+  max-height: min(var(--chess-board-height), var(--chess-board-width));
+  margin: 0 auto;
+  background-color: var(--background-color);
+
+  & chess-board-row {
+    display: flex;
+
+    chess-square {
+      width: min(var(--chess-square-height), var(--chess-square-width));
+      height: min(var(--chess-square-height), var(--chess-square-width));
+      border-radius: 2%;
+      font-size: 1.3em;
+      overflow: hidden;
+      chess-piece > svg {
+        width: 100%;
+        height: 100%;
+        & g {
+          margin: 10% auto;
+        }
+      }
+    }
+
+    & chess-square.selected {
+      border: 2px solid rgba(var(--highlight), 1) !important;
+    }
+
+    chess-square {
+      background-color: var(--light-background-color);
+      border: 2px solid var(--light-background-color);
+    }
+
+    &:nth-child(even) chess-square:nth-child(odd) {
+      border: 2px solid var(--dark-background-color);
+      background-color: var(--dark-background-color);
+    }
+    &:nth-child(odd) chess-square:nth-child(even) {
+      border: 2px solid var(--dark-background-color);
+      background-color: var(--dark-background-color);
+    }
+    chess-square.hightlight {
+      background-color: rgba(var(--highlight), 0.5) !important;
+    }
+  }
+
+  &.black-team {
+    transform: rotate(180deg);
+    chess-piece > svg {
+      transform: rotate(180deg);
+      transition: transform 1.2s ease;
+    }
+    transition: transform 0.8s ease-in-out;
+  }
+  &.white-team {
+    transform: rotate(0deg);
+    chess-piece > svg {
+      transform: rotate(0deg);
+      transition: transform 1.2s ease;
+    }
+    transition: transform 0.8s ease-out;
+  }
+
+  button {
+    display: block;
+    width: 20vw;
+    margin: 0 auto;
+  }
+}

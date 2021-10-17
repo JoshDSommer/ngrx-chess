@@ -1,9 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { getGetChessPiece, getSquareAtCoordinate } from './board.functions';
-import { BoardState } from './board.models';
+import { BoardState, ChessPiece, Column } from './board.models';
 import { APP_FEATURE_KEY } from './board.reducer';
 export const featureState = createFeatureSelector<BoardState>(APP_FEATURE_KEY);
-
+export type ChessBoardViewSquare = {
+  key: Column;
+  chessPiece: ChessPiece;
+  highlighted: boolean;
+};
+export type ChessBoardViewRow = { key: string; row: ChessBoardViewSquare[] };
+export type ChessBoardView = ChessBoardViewRow[];
 export const watchBoard = createSelector(featureState, ({ board }) => {
   const rows = Object.entries(board)
     .map(([key, row]) => ({
@@ -15,7 +21,7 @@ export const watchBoard = createSelector(featureState, ({ board }) => {
       })),
     }))
     .reverse();
-  return rows;
+  return rows as ChessBoardView;
 });
 
 export const selectTeam = createSelector(

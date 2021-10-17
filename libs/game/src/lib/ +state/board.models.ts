@@ -1,12 +1,15 @@
+export const columnLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as const;
+export const rowNumbers = [1, 2, 3, 4, 5, 6, 7, 8] as const;
+export type Column = typeof columnLetters[number];
+export type Row = typeof rowNumbers[number];
 export interface Square {
-  column: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
-  row: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  column: Column;
+  row: Row;
 }
-export const rowLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 export type Squares = Square[];
 
-function emptySquare(): Square {
+export function emptySquare(): Square {
   return { row: 1, column: 'a' } as Square;
 }
 
