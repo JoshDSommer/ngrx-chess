@@ -21,7 +21,7 @@ import {
 } from '../ +state/board.models';
 import { ChessBoardView, ChessBoardViewRow } from '../ +state/board.selectors';
 @Component({
-  selector: 'game-board',
+  selector: 'chess-board',
   templateUrl: './chess-board.component.html',
   styleUrls: ['./chess-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

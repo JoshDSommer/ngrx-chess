@@ -8,14 +8,14 @@ import {
 } from './ +state/board.selectors';
 
 @Component({
-  selector: 'game-board-wrap',
+  selector: 'game-board',
   template: `
-    <game-board
+    <chess-board
       [board]="(board$ | async)!"
       [selectedCoordinate]="selectedCoordinate$ | async"
       [team]="(team$ | async)!"
       (flipBoard)="flipBoard()"
-    ></game-board>
+    ></chess-board>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
