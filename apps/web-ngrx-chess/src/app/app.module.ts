@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
-import { routerReducer } from '@ngrx/router-store';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
@@ -38,6 +38,7 @@ import { appRoutes } from './app.routes';
         persist: true,
       },
     }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
