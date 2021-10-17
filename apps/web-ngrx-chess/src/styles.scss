@@ -22,7 +22,7 @@ h1 {
   max-width: 620px;
   margin: 0 auto;
 }
-game-chess-board {
+game-board {
   display: block;
   max-width: min(var(--chess-board-height), var(--chess-board-width));
   max-height: min(var(--chess-board-height), var(--chess-board-width));

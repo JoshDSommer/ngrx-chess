@@ -10,12 +10,12 @@ import {
 @Component({
   selector: 'game-board-wrap',
   template: `
-    <game-chess-board
+    <game-board
       [board]="(board$ | async)!"
       [selectedCoordinate]="selectedCoordinate$ | async"
       [team]="(team$ | async)!"
       (flipBoard)="flipBoard()"
-    ></game-chess-board>
+    ></game-board>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
