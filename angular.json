@@ -9,7 +9,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/game"],
+          "outputs": [
+            "coverage/libs/game"
+          ],
           "options": {
             "jestConfig": "libs/game/jest.config.js",
             "passWithNoTests": true
@@ -34,7 +36,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/login"],
+          "outputs": [
+            "coverage/libs/login"
+          ],
           "options": {
             "jestConfig": "libs/login/jest.config.js",
             "passWithNoTests": true
@@ -59,7 +63,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared"],
+          "outputs": [
+            "coverage/libs/shared"
+          ],
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
             "passWithNoTests": true
@@ -84,7 +90,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/sign-up"],
+          "outputs": [
+            "coverage/libs/sign-up"
+          ],
           "options": {
             "jestConfig": "libs/sign-up/jest.config.js",
             "passWithNoTests": true
@@ -109,7 +117,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/web-ngrx-chess",
             "index": "apps/web-ngrx-chess/src/index.html",
@@ -121,7 +131,9 @@
               "apps/web-ngrx-chess/src/favicon.ico",
               "apps/web-ngrx-chess/src/assets"
             ],
-            "styles": ["apps/web-ngrx-chess/src/styles.scss"],
+            "styles": [
+              "apps/web-ngrx-chess/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -136,12 +148,6 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/web-ngrx-chess/src/environments/environment.ts",
-                  "with": "apps/web-ngrx-chess/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -186,7 +192,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/web-ngrx-chess"],
+          "outputs": [
+            "coverage/apps/web-ngrx-chess"
+          ],
           "options": {
             "jestConfig": "apps/web-ngrx-chess/jest.config.js",
             "passWithNoTests": true
@@ -214,9 +222,13 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/web-ngrx-chess-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/web-ngrx-chess-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
