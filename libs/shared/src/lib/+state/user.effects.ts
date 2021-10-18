@@ -6,8 +6,10 @@ import { map } from 'rxjs/operators';
 import { redirectToUrl, urlContains } from '../functions/state';
 import { SupabaseLoginService } from '../supabase-login.service';
 import {
+  loadUserSuccess,
   magicLinkAuthenticationError,
   magicLinkAuthenticationSuccess,
+  userAuthenticated,
 } from './user.actions';
 
 @Injectable()
@@ -17,6 +19,7 @@ export class UserEffects {
       ofType(ROUTER_NAVIGATION),
       urlContains('#access_token='),
       map(() => {
+        debugger;
         const sessionExists = this.login.getSession();
         if (sessionExists) {
           return magicLinkAuthenticationSuccess();
@@ -50,6 +53,14 @@ export class UserEffects {
         redirectToUrl(this.router, '/game')
       ),
     { dispatch: false }
+  );
+
+  refreshUserData = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userAuthenticated, magicLinkAuthenticationSuccess),
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      map(() => loadUserSuccess({ user: this.login.getUser()! }))
+    )
   );
 
   constructor(

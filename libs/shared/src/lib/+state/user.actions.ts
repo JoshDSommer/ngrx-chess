@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { UserEntity } from './user.models';
+import { User } from '@supabase/supabase-js';
 
 export const init = createAction('[User Page] Init');
 
 export const loadUserSuccess = createAction(
   '[User/API] Load User Success',
-  props<{ user: UserEntity[] }>()
+  props<{ user: User }>()
 );
 
 export const loadUserFailure = createAction(
