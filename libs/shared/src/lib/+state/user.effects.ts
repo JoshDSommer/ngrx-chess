@@ -2,8 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
-import { map } from 'rxjs/operators';
-import { redirectToUrl, urlContains } from '../functions/state';
+import { from } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import {
+  redirectToUrl,
+  urlContains,
+  urlDoesNotContain,
+} from '../functions/state';
 import { SupabaseLoginService } from '../supabase-login.service';
 import {
   loadUserSuccess,
@@ -18,8 +23,9 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(ROUTER_NAVIGATION),
       urlContains('#access_token='),
-      map(() => {
-        const sessionExists = this.login.getSession();
+      urlDoesNotContain('logout'),
+      switchMap(() => from(this.login.refreshSession())),
+      map((sessionExists) => {
         if (sessionExists) {
           return magicLinkAuthenticationSuccess();
         }

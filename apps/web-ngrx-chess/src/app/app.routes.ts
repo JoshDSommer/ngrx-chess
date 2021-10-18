@@ -1,3 +1,5 @@
+import { Routes } from '@angular/router';
+
 export const appRoutes = [
   {
     path: 'game',
@@ -13,4 +15,8 @@ export const appRoutes = [
         (m) => m.LoginModule
       ),
   },
-];
+  {
+    path: 'logout',
+    redirectTo: 'login',
+  },
+] as Routes;

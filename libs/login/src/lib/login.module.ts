@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forChild([
       { path: '', pathMatch: 'full', component: LoginComponent },
       { path: 'error', component: InvalidComponent },
+      { path: 'logout', component: InvalidComponent },
     ]),
   ],
 })

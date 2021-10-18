@@ -19,6 +19,9 @@ export class SupabaseLoginService {
   getSession() {
     return this.supabaseClient.auth.session();
   }
+  refreshSession() {
+    return this.supabaseClient.auth.refreshSession();
+  }
   signIn(email: string) {
     return this.supabaseClient.auth.signIn({ email });
   }
