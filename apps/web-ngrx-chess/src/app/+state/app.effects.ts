@@ -53,6 +53,7 @@ export class AppEffects {
       ),
     { dispatch: false }
   );
+
   logoutRedirect$ = createEffect(
     () =>
       this.actions$.pipe(

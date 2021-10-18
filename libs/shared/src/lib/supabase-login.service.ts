@@ -9,7 +9,7 @@ export class SupabaseLoginService {
   constructor() {
     this.supabaseClient = createClient(
       environment.supabaseUrl,
-      environment.supbaseKey
+      environment.supabaseKey
     );
   }
   getUser() {

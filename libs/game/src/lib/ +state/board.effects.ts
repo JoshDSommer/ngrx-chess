@@ -76,7 +76,7 @@ export class BoardEffects {
       filter(([selectedChessPieceSquare, previousChessPiece]) =>
         sameCoordinates(selectedChessPieceSquare, previousChessPiece)
       ),
-      switchMap(() => [clearSelections(), clearHighlightedSquares()])
+      switchMap(() => [clearSelections(), clearHighlightedSquares()]) /// not the best action hygiene      )
     )
   );
 
