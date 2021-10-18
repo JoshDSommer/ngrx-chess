@@ -1,27 +1,60 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
-
-import * as UserActions from './user.actions';
-import * as UserFeature from './user.reducer';
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { ROUTER_NAVIGATION } from '@ngrx/router-store';
+import { map } from 'rxjs/operators';
+import { redirectToUrl, urlContains } from '../functions/state';
+import { SupabaseLoginService } from '../supabase-login.service';
+import {
+  magicLinkAuthenticationError,
+  magicLinkAuthenticationSuccess,
+} from './user.actions';
 
 @Injectable()
 export class UserEffects {
-  init$ = createEffect(() =>
+  magicLinkAuthentication$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserActions.init),
-      fetch({
-        run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return UserActions.loadUserSuccess({ user: [] });
-        },
-        onError: (action, error) => {
-          console.error('Error', error);
-          return UserActions.loadUserFailure({ error });
-        },
+      ofType(ROUTER_NAVIGATION),
+      urlContains('#access_token='),
+      map(() => {
+        const sessionExists = this.login.getSession();
+        if (sessionExists) {
+          return magicLinkAuthenticationSuccess();
+        }
+        return magicLinkAuthenticationError();
       })
     )
   );
 
-  constructor(private readonly actions$: Actions) {}
+  magicLinkAuthenticationError$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ROUTER_NAVIGATION),
+      urlContains('#error_code=404'),
+      map(() => magicLinkAuthenticationError())
+    )
+  );
+
+  errorRedirect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(magicLinkAuthenticationError),
+        redirectToUrl(this.router, '/login/error')
+      ),
+    { dispatch: false }
+  );
+
+  successRedirect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(magicLinkAuthenticationSuccess),
+        redirectToUrl(this.router, '/game')
+      ),
+    { dispatch: false }
+  );
+
+  constructor(
+    private readonly actions$: Actions,
+    private router: Router,
+    private login: SupabaseLoginService
+  ) {}
 }

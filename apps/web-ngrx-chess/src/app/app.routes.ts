@@ -6,4 +6,11 @@ export const appRoutes = [
         (m) => m.GameModule
       ),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('../../../../libs/login/src/lib/login.module').then(
+        (m) => m.LoginModule
+      ),
+  },
 ];
