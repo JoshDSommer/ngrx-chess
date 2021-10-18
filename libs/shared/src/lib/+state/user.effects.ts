@@ -19,7 +19,6 @@ export class UserEffects {
       ofType(ROUTER_NAVIGATION),
       urlContains('#access_token='),
       map(() => {
-        debugger;
         const sessionExists = this.login.getSession();
         if (sessionExists) {
           return magicLinkAuthenticationSuccess();
