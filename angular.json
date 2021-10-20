@@ -150,6 +150,12 @@
                   "maximumError": "4kb"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-ngrx-chess/src/environments/environment.ts",
+                  "with": "apps/web-ngrx-chess/src/environments/environment.prod.ts"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {

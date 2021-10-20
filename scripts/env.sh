@@ -5,9 +5,9 @@ echo Writing secrets
 
 SEDOPTION="-i"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	sed -i '' -e 's/SUPABASE_URL/'"$SUPABASE_URL"'/;s/SUPABASE_KEY/'"$SUPABASE_KEY"'/' environment.ts
+	sed -i '' -e 's/SUPABASE_URL/'"$SUPABASE_URL"'/;s/SUPABASE_KEY/'"$SUPABASE_KEY"'/' environment.prod.ts
 else
-	sed -i 's/SUPABASE_URL/'"$SUPABASE_URL"'/;s/SUPABASE_KEY/'"$SUPABASE_KEY"'/' environment.ts
+	sed -i 's/SUPABASE_URL/'"$SUPABASE_URL"'/;s/SUPABASE_KEY/'"$SUPABASE_KEY"'/' environment.prod.ts
 fi
 
 echo Done writing secrets
