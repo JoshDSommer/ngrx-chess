@@ -14,8 +14,8 @@ import {
 } from './board.actions';
 import {
   getSquareAtCoordinate,
+  removeHighlightOnSquares,
   setChessSquareHighlightedState,
-  setChessSquaresHighlightedState,
 } from './board.functions';
 import { initialState } from './board.intialState';
 import { BoardState, ChessColor } from './board.models';
@@ -53,11 +53,7 @@ const boardReducer = createReducer(
   }),
   on(clearHighlightedSquares, (state) => ({
     ...state,
-    board: setChessSquaresHighlightedState(
-      state.board,
-      state.possibleMoves,
-      false
-    ),
+    board: removeHighlightOnSquares(state.board, state.possibleMoves),
     possibleMoves: [],
   })),
   on(movePiece, (state, { to, from }) => {

@@ -1,19 +1,13 @@
 import { ChessBoard, ChessSquare, Square, Squares } from './board.models';
 
-export function getSquareAtCoordinate(
-  board: ChessBoard,
-  coordinates: Square | undefined
-) {
+export function getSquareAtCoordinate(board: ChessBoard, coordinates: Square) {
   if (!coordinates) {
     return;
   }
   return board[coordinates?.row][coordinates?.column] as ChessSquare;
 }
 
-export function getGetChessPiece(
-  board: ChessBoard,
-  coordinates: Square | undefined
-) {
+export function getGetChessPiece(board: ChessBoard, coordinates: Square) {
   const chessPiece = getSquareAtCoordinate(board, coordinates);
   return chessPiece?.chessPiece;
 }
@@ -28,11 +22,11 @@ export function sameCoordinates(coordinate1: Square, coordinate2?: Square) {
   );
 }
 
-export function setChessSquaresHighlightedState(
+export function removeHighlightOnSquares(
   board: ChessBoard,
-  squares: Square[],
-  highlighted: boolean
+  squares: Square[]
 ): ChessBoard {
+  const highlighted = false;
   let updatedBoard = { ...board };
   for (const square of squares) {
     updatedBoard = setChessSquareHighlightedState(

@@ -10,6 +10,7 @@ export const loadUserSuccess = createAction(
 
 export const loadUserFailure = createAction(
   '[User/API] Load User Failure',
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props<{ error: any }>()
 );
 export const magicLinkAuthentication = createAction(
