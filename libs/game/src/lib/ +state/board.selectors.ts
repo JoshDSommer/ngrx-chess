@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { getGetChessPiece, getSquareAtCoordinate } from './board.functions';
 import { BoardState, ChessPiece, Column } from './board.models';
@@ -53,18 +54,33 @@ export const getSelectedEnemyChessPieceSquare = createSelector(
 export const getSelectedChessPiece = createSelector(
   selectBoard,
   getSelectedChessPieceSquare,
-  (board, selectedChessPiece) => getGetChessPiece(board, selectedChessPiece)
+  (board, selectedChessPiece) => {
+    if (!selectChessPiece) {
+      return;
+    }
+    return getGetChessPiece(board, selectedChessPiece!);
+  }
 );
 
 export const getSelectedEnemeyChessPiece = createSelector(
   selectBoard,
   getSelectedEnemyChessPieceSquare,
-  (board, chessPiece) => getGetChessPiece(board, chessPiece)
+  (board, chessPiece) => {
+    if (!chessPiece) {
+      return;
+    }
+    return getGetChessPiece(board, chessPiece);
+  }
 );
 export const getChessPieceAtSelectedSquare = createSelector(
   selectBoard,
   getSelectedSquare,
-  (board, selectedSquare) => getGetChessPiece(board, selectedSquare)
+  (board, selectedSquare) => {
+    if (!selectedSquare) {
+      return;
+    }
+    return getGetChessPiece(board, selectedSquare);
+  }
 );
 
 export const getSelectedChessPieceSquareAndBoard = createSelector(
@@ -76,7 +92,12 @@ export const getSelectedChessPieceSquareAndBoard = createSelector(
 export const selectChessPiece = createSelector(
   selectBoard,
   getSelectedSquare,
-  getSquareAtCoordinate
+  (board, selectedSquare) => {
+    if (!selectedSquare) {
+      return;
+    }
+    return getSquareAtCoordinate(board, selectedSquare);
+  }
 );
 
 export const selectPossibleMovesFrom = createSelector(
