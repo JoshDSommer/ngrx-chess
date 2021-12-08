@@ -69,23 +69,6 @@ chess-board {
     }
   }
 
-  &.black-team {
-    transform: rotate(180deg);
-    chess-piece > svg {
-      transform: rotate(180deg);
-      transition: transform 1.2s ease;
-    }
-    transition: transform 0.8s ease-in-out;
-  }
-  &.white-team {
-    transform: rotate(0deg);
-    chess-piece > svg {
-      transform: rotate(0deg);
-      transition: transform 1.2s ease;
-    }
-    transition: transform 0.8s ease-out;
-  }
-
   button {
     display: block;
     width: 20vw;
