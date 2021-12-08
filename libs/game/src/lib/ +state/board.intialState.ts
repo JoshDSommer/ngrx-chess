@@ -7,7 +7,7 @@ import {
   columnLetters,
 } from './board.models';
 
-const emptyRow = () => ({
+export const emptyRow = () => ({
   a: { highlighted: false },
   b: { highlighted: false },
   c: { highlighted: false },
@@ -326,14 +326,14 @@ const mapRow = (rowToMap: ChessSquare[]) => {
 
 export const initialState: BoardState = {
   board: {
-    8: mapRow(rowEight),
-    7: mapRow(rowSeven),
-    6: emptyRow(),
-    5: emptyRow(),
-    4: emptyRow(),
-    3: emptyRow(),
-    2: mapRow(rowTwo),
-    1: mapRow(rowOne),
+    row8: mapRow(rowEight),
+    row7: mapRow(rowSeven),
+    row6: emptyRow(),
+    row5: emptyRow(),
+    row4: emptyRow(),
+    row3: emptyRow(),
+    row2: mapRow(rowTwo),
+    row1: mapRow(rowOne),
   },
   selectedSquare: undefined,
   selectedChessPiece: undefined,

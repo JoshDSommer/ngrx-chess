@@ -1,5 +1,14 @@
 export const columnLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] as const;
-export const rowNumbers = [1, 2, 3, 4, 5, 6, 7, 8] as const;
+export const rowNumbers = [
+  'row1',
+  'row2',
+  'row3',
+  'row4',
+  'row5',
+  'row6',
+  'row7',
+  'row8',
+] as const;
 export type Column = typeof columnLetters[number];
 export type Row = typeof rowNumbers[number];
 export interface Square {
@@ -10,7 +19,7 @@ export interface Square {
 export type Squares = Square[];
 
 export function emptySquare(): Square {
-  return { row: 1, column: 'a' } as Square;
+  return { row: 'row1', column: 'a' } as Square;
 }
 
 export enum SquareState {
@@ -60,14 +69,14 @@ export type ChessRow = {
   h: ChessSquare;
 };
 export type ChessBoard = {
-  8: ChessRow;
-  7: ChessRow;
-  6: ChessRow;
-  5: ChessRow;
-  4: ChessRow;
-  3: ChessRow;
-  2: ChessRow;
-  1: ChessRow;
+  row8: ChessRow;
+  row7: ChessRow;
+  row6: ChessRow;
+  row5: ChessRow;
+  row4: ChessRow;
+  row3: ChessRow;
+  row2: ChessRow;
+  row1: ChessRow;
 };
 
 export interface BoardState {

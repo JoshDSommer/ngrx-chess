@@ -12,17 +12,7 @@ export type ChessBoardViewSquare = {
 export type ChessBoardViewRow = { key: string; row: ChessBoardViewSquare[] };
 export type ChessBoardView = ChessBoardViewRow[];
 export const watchBoard = createSelector(featureState, ({ board }) => {
-  const rows = Object.entries(board)
-    .map(([key, row]) => ({
-      key: key,
-      row: Object.entries(row).map(([key, row]) => ({
-        key,
-        chessPiece: row.chessPiece,
-        highlighted: row.highlighted,
-      })),
-    }))
-    .reverse();
-  return rows as ChessBoardView;
+  return board;
 });
 
 export const selectTeam = createSelector(
