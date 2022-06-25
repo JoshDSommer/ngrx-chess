@@ -14,6 +14,7 @@ import {
   selectSquare,
 } from '../ +state/board.actions';
 import {
+  ChessBoard,
   ChessColor,
   ChessPiece,
   emptySquare,
@@ -34,7 +35,7 @@ import { ChessBoardView, ChessBoardViewRow } from '../ +state/board.selectors';
 export class ChessBoardPresentationComponent implements OnInit {
   ChessColor = ChessColor;
   @Input() team: ChessColor | null = ChessColor.white;
-  @Input() board?: ChessBoardView = [];
+  @Input() board?: ChessBoard = [];
   @Input() selectedCoordinate: Square | null | undefined = emptySquare();
   @Output() flipBoard = new EventEmitter();
 
@@ -45,7 +46,7 @@ export class ChessBoardPresentationComponent implements OnInit {
     return square.row;
   };
   newSquare = (column: string, row: string) =>
-    ({ column, row: +row } as Square);
+    ({ column, row: row } as Square);
   constructor(private store: Store) {}
 
   ngOnInit() {}

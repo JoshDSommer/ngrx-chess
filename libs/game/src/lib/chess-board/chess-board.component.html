@@ -3,7 +3,7 @@
     [chessPiece]="square?.chessPiece"
     *ngFor="let square of row.row"
     [isSelected]="
-      selectedCoordinate?.row === +row.key &&
+      selectedCoordinate?.row === row.key &&
       selectedCoordinate?.column === square?.key
     "
     [class.hightlight]="square?.highlighted"
