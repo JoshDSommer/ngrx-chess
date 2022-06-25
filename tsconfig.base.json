@@ -19,7 +19,7 @@
       "@ngrx-chess/login": ["libs/login/src/index.ts"],
       "@ngrx-chess/shared": ["libs/shared/src/index.ts"],
       "@ngrx-chess/sign-up": ["libs/sign-up/src/index.ts"],
-      "@web-chess-env":["apps/web-ngrx-chess/src/environments/environment.ts"]
+      "@web-chess-env": ["apps/web-ngrx-chess/src/environments/environment.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
