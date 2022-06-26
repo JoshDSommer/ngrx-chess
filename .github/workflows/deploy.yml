@@ -7,6 +7,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Pull Main Branch
+      run: git fetch origin main
+
     - name: Install Deps
       run: npm install
 
