@@ -9,9 +9,9 @@
     "env-variables": "./scripts/env.sh",
     "build": "npm run env-variables && nx build",
     "test": "nx test",
-    "build:ci":"nx affected:build --base=origin/main"
+    "build:ci":"nx affected:build -- --base=remotes/origin/main"
   },
-  "private": true,
+  "private": true,--base=main
   "dependencies": {
     "@angular/animations": "^12.2.0",
     "@angular/common": "^12.2.0",
