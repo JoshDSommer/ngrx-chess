@@ -16,4 +16,4 @@ jobs:
       run: npm run build:ci
 
     - name: Zip
-      run: cd dist/apps && ../../scripts/zip-apps.sh ${{ github.sha }}
+      run: npm run zip -- ${{ github.sha }}

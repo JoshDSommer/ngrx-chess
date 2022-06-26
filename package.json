@@ -9,7 +9,8 @@
     "env-variables": "./scripts/env.sh",
     "build": "npm run env-variables && nx build",
     "test": "nx test",
-    "build:ci":"npx nx affected:build --base=remotes/origin/main"
+    "build:ci":"npx nx affected:build --base=remotes/origin/main",
+    "zip":"cd dist/apps && ../../scripts/zip-apps.sh"
   },
   "private": true,
   "dependencies": {
