@@ -10,7 +10,7 @@ jobs:
     - name: Build
       run: npm install
 
-    -run: pwd
+    - run: pwd
 
     - name: Zip
       run: cd dist/apps && ../../scripts/zip-apps.${{ github.sha }}.zip
