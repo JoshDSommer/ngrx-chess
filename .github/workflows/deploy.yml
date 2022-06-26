@@ -14,4 +14,4 @@ jobs:
       run: npm ci
 
     - name: Zip
-      run: dist/apps && ../../scripts/zip-apps.sh ${{ github.head_ref }}.${{ github.sha }}
+      run: cd dist/apps && ../../scripts/zip-apps.sh ${{ github.head_ref }}.${{ github.sha }}
