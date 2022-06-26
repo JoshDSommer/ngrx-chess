@@ -7,10 +7,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build
+    - name: Install Deps
       run: npm install
 
-    - run: pwd
+    - name: Build
+    - run: npm run build:ci
 
     - name: Zip
       run: cd dist/apps && ../../scripts/zip-apps.${{ github.sha }}.zip
