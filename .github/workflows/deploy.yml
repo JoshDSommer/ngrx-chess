@@ -6,12 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '14.x'
 
     - name: Build
-      run: npm ci
+      run: npm install
+
+    -run: pwd
 
     - name: Zip
-      run: cd dist/apps && ../../scripts/zip-apps.sh ${{ github.head_ref }}.${{ github.sha }}
+      run: cd dist/apps && ../../scripts/zip-apps.${{ github.sha }}.zip
