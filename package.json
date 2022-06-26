@@ -9,7 +9,7 @@
     "env-variables": "./scripts/env.sh",
     "build": "npm run env-variables && nx build",
     "test": "nx test",
-    "build":"nx affected:build --base=main"
+    "build:ci":"nx affected:build --base=main"
   },
   "private": true,
   "dependencies": {

@@ -2,19 +2,16 @@ name: Deploy
 
 on: [push]
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-          cache: 'npm'
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14.x'
 
-      - name: Install Dependencies 
-        run: npm ci
+    - name: Build
+      run: npm ci
 
-      - name: build builder
-        run: echo "success"
+    - name: Zip
+      run: dist/apps && ../../scripts/zip-apps.sh ${{ github.head_ref }}.${{ github.sha }}
